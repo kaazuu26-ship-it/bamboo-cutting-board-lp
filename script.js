@@ -10,31 +10,56 @@ fetch('config.json')
     .then(response => response.json())
     .then(data => {
         config = data;
-        // CTA リンクの href を設定
-        setupCTALinks();
+        // ボタンのリンク設定
+        setupButtonLinks();
     })
     .catch(error => {
         console.warn('config.json が見つかりません:', error);
         console.warn('手動で config.json を作成してください。');
     });
 
-// ===== CTA リンク設定 =====
-function setupCTALinks() {
-    const ctaMid = document.getElementById('ctaMid');
-    const ctaFinal = document.getElementById('ctaFinal');
+// ===== ボタンリンク設定 =====
+function setupButtonLinks() {
+    // 中間のボタン
+    const couponBtnMid = document.getElementById('couponBtnMid');
+    const productBtnMid = document.getElementById('productBtnMid');
 
-    if (ctaMid && config.couponUrl) {
-        ctaMid.href = config.couponUrl;
-        ctaMid.addEventListener('click', function(e) {
+    // 最後のボタン
+    const couponBtnFinal = document.getElementById('couponBtnFinal');
+    const productBtnFinal = document.getElementById('productBtnFinal');
+
+    // クーポンボタンの設定
+    if (couponBtnMid && config.couponUrl) {
+        couponBtnMid.href = config.couponUrl;
+        couponBtnMid.addEventListener('click', function() {
             if (window.fbq) {
                 fbq('trackCustom', 'RakutenCouponClick');
             }
         });
     }
 
-    if (ctaFinal && config.productUrl) {
-        ctaFinal.href = config.productUrl;
-        ctaFinal.addEventListener('click', function(e) {
+    if (couponBtnFinal && config.couponUrl) {
+        couponBtnFinal.href = config.couponUrl;
+        couponBtnFinal.addEventListener('click', function() {
+            if (window.fbq) {
+                fbq('trackCustom', 'RakutenCouponClick');
+            }
+        });
+    }
+
+    // 商品ボタンの設定
+    if (productBtnMid && config.productUrl) {
+        productBtnMid.href = config.productUrl;
+        productBtnMid.addEventListener('click', function() {
+            if (window.fbq) {
+                fbq('trackCustom', 'RakutenProductClick');
+            }
+        });
+    }
+
+    if (productBtnFinal && config.productUrl) {
+        productBtnFinal.href = config.productUrl;
+        productBtnFinal.addEventListener('click', function() {
             if (window.fbq) {
                 fbq('trackCustom', 'RakutenProductClick');
             }
