@@ -49,15 +49,18 @@ body {
 
 /* ===== CTA セクション ===== */
 .cta-section {
-    position: relative;
-    padding: 0;
-    background: transparent;
-    border-top: none;
-    border-bottom: none;
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
 }
 
-.cta-section.final {
-    background: transparent;
+.cta-section:hover {
+    opacity: 0.95;
+}
+
+.cta-section:active {
+    opacity: 0.9;
 }
 
 .cta-image {
@@ -66,83 +69,46 @@ body {
     display: block;
 }
 
-/* ===== ボタン ===== */
-.button-group {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    z-index: 10;
-}
-
-.btn {
-    padding: 16px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
-}
-
-.btn-coupon {
-    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
-    color: white;
-}
-
-.btn-coupon:hover {
-    background: linear-gradient(135deg, #ff5252 0%, #ff3333 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-}
-
-.btn-coupon:active {
-    transform: translateY(0);
-}
-
-.btn-product {
-    background: linear-gradient(135deg, #2d5a3d 0%, #3d7a4d 100%);
-    color: white;
-}
-
-.btn-product:hover {
-    background: linear-gradient(135deg, #1d4a2d 0%, #2d6a3d 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45, 90, 61, 0.3);
-}
-
-.btn-product:active {
-    transform: translateY(0);
-}
+/* ===== ボタン（削除済み - CTA画像全体がリンク） ===== */
 
 /* ===== フッター ===== */
 .footer {
-    background: #f5f5f5;
+    background: linear-gradient(135deg, #2d5a3d 0%, #3d7a4d 100%);
     text-align: center;
-    padding: 20px;
-    font-size: 12px;
-    color: #666;
+    padding: 40px 20px;
+    color: white;
     border-top: 1px solid #ddd;
 }
 
 .footer p {
-    margin: 8px 0;
+    margin: 12px 0;
+}
+
+.footer-tagline {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.footer-shop {
+    font-size: 13px;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.footer-link {
+    font-size: 12px;
 }
 
 .footer-link a {
-    color: #2d5a3d;
+    color: #fff;
     text-decoration: none;
-    border-bottom: 1px solid #2d5a3d;
+    border-bottom: 1px solid #fff;
 }
 
 .footer-link a:hover {
-    color: #3d7a4d;
+    opacity: 0.8;
 }
 
 /* ===== レスポンシブ ===== */

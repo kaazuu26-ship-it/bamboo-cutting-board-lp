@@ -10,64 +10,35 @@ fetch('config.json')
     .then(response => response.json())
     .then(data => {
         config = data;
+        // CTA リンクの href を設定
+        setupCTALinks();
     })
     .catch(error => {
         console.warn('config.json が見つかりません:', error);
         console.warn('手動で config.json を作成してください。');
     });
 
-// ===== ボタンイベント =====
-document.addEventListener('DOMContentLoaded', function() {
-    // 中間の CTA ボタン
-    const couponBtnMid = document.getElementById('couponBtnMid');
-    const productBtnMid = document.getElementById('productBtnMid');
+// ===== CTA リンク設定 =====
+function setupCTALinks() {
+    const ctaMid = document.getElementById('ctaMid');
+    const ctaFinal = document.getElementById('ctaFinal');
 
-    // 最後の CTA ボタン
-    const couponBtnFinal = document.getElementById('couponBtnFinal');
-    const productBtnFinal = document.getElementById('productBtnFinal');
+    if (ctaMid && config.couponUrl) {
+        ctaMid.href = config.couponUrl;
+        ctaMid.addEventListener('click', function(e) {
+            if (window.fbq) {
+                fbq('trackCustom', 'RakutenCouponClick');
+            }
+        });
+    }
 
-    // イベントリスナー設定
-    if (couponBtnMid) {
-        couponBtnMid.addEventListener('click', openCoupon);
-    }
-    if (productBtnMid) {
-        productBtnMid.addEventListener('click', openProduct);
-    }
-    if (couponBtnFinal) {
-        couponBtnFinal.addEventListener('click', openCoupon);
-    }
-    if (productBtnFinal) {
-        productBtnFinal.addEventListener('click', openProduct);
-    }
-});
-
-// ===== クーポン獲得ボタンの処理 =====
-function openCoupon() {
-    if (!config.couponUrl) {
-        alert('クーポン URL がまだ設定されていません。');
-        console.error('couponUrl を config.json で設定してください。');
-        return;
-    }
-    window.open(config.couponUrl, '_blank');
-
-    // 計測（必要に応じて）
-    if (window.fbq) {
-        fbq('trackCustom', 'RakutenCouponClick');
-    }
-}
-
-// ===== 商品ページボタンの処理 =====
-function openProduct() {
-    if (!config.productUrl) {
-        alert('商品 URL がまだ設定されていません。');
-        console.error('productUrl を config.json で設定してください。');
-        return;
-    }
-    window.location.href = config.productUrl;
-
-    // 計測（必要に応じて）
-    if (window.fbq) {
-        fbq('trackCustom', 'RakutenProductClick');
+    if (ctaFinal && config.productUrl) {
+        ctaFinal.href = config.productUrl;
+        ctaFinal.addEventListener('click', function(e) {
+            if (window.fbq) {
+                fbq('trackCustom', 'RakutenProductClick');
+            }
+        });
     }
 }
 
