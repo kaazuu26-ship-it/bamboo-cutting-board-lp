@@ -10,44 +10,44 @@ fetch('config.json')
     .then(response => response.json())
     .then(data => {
         config = data;
-        // ボタンのリンク設定
-        setupButtonLinks();
+        // リンク設定
+        setupLinks();
     })
     .catch(error => {
         console.warn('config.json が見つかりません:', error);
         console.warn('手動で config.json を作成してください。');
     });
 
-// ===== ボタンリンク設定 =====
-function setupButtonLinks() {
-    // 中間のボタン
-    const couponBtnMid = document.getElementById('couponBtnMid');
-    const productBtnMid = document.getElementById('productBtnMid');
+// ===== リンク設定 =====
+function setupLinks() {
+    // CTA 画像リンク（クーポンページへ）
+    const ctaMidLink = document.getElementById('ctaMidLink');
+    const ctaFinalLink = document.getElementById('ctaFinalLink');
 
-    // 最後のボタン
-    const couponBtnFinal = document.getElementById('couponBtnFinal');
+    // 商品ボタン
+    const productBtnMid = document.getElementById('productBtnMid');
     const productBtnFinal = document.getElementById('productBtnFinal');
 
-    // クーポンボタンの設定
-    if (couponBtnMid && config.couponUrl) {
-        couponBtnMid.href = config.couponUrl;
-        couponBtnMid.addEventListener('click', function() {
+    // CTA リンク設定（クーポン）
+    if (ctaMidLink && config.couponUrl) {
+        ctaMidLink.href = config.couponUrl;
+        ctaMidLink.addEventListener('click', function() {
             if (window.fbq) {
                 fbq('trackCustom', 'RakutenCouponClick');
             }
         });
     }
 
-    if (couponBtnFinal && config.couponUrl) {
-        couponBtnFinal.href = config.couponUrl;
-        couponBtnFinal.addEventListener('click', function() {
+    if (ctaFinalLink && config.couponUrl) {
+        ctaFinalLink.href = config.couponUrl;
+        ctaFinalLink.addEventListener('click', function() {
             if (window.fbq) {
                 fbq('trackCustom', 'RakutenCouponClick');
             }
         });
     }
 
-    // 商品ボタンの設定
+    // 商品ボタン設定
     if (productBtnMid && config.productUrl) {
         productBtnMid.href = config.productUrl;
         productBtnMid.addEventListener('click', function() {
