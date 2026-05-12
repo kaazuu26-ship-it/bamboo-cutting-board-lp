@@ -49,28 +49,35 @@ body {
 
 /* ===== CTA セクション ===== */
 .cta-section {
-    padding: 20px;
-    background: #fafafa;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    position: relative;
+    padding: 0;
+    background: transparent;
+    border-top: none;
+    border-bottom: none;
 }
 
 .cta-section.final {
-    background: #f0f8f5;
+    background: transparent;
 }
 
 .cta-image {
     width: 100%;
     height: auto;
-    margin-bottom: 20px;
     display: block;
 }
 
 /* ===== ボタン ===== */
 .button-group {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    z-index: 10;
 }
 
 .btn {
