@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f5f5;
+    color: #333;
+}
+
+.container {
+    max-width: 768px;
+    margin: 0 auto;
+    background: white;
+}
+
+/* ===== ヘッダー ===== */
+.header {
+    background: linear-gradient(135deg, #2d5a3d 0%, #3d7a4d 100%);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.header .tagline {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ===== 漫画セクション ===== */
+.manga-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.manga-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ===== CTA セクション ===== */
+.cta-section {
+    padding: 20px;
+    background: #fafafa;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+.cta-section.final {
+    background: #f0f8f5;
+}
+
+.cta-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    display: block;
+}
+
+/* ===== ボタン ===== */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn {
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.btn-coupon {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+    color: white;
+}
+
+.btn-coupon:hover {
+    background: linear-gradient(135deg, #ff5252 0%, #ff3333 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.btn-coupon:active {
+    transform: translateY(0);
+}
+
+.btn-product {
+    background: linear-gradient(135deg, #2d5a3d 0%, #3d7a4d 100%);
+    color: white;
+}
+
+.btn-product:hover {
+    background: linear-gradient(135deg, #1d4a2d 0%, #2d6a3d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 90, 61, 0.3);
+}
+
+.btn-product:active {
+    transform: translateY(0);
+}
+
+/* ===== フッター ===== */
+.footer {
+    background: #f5f5f5;
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: #666;
+    border-top: 1px solid #ddd;
+}
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 14px 16px;
+    }
+}
+
+@media (min-width: 769px) {
+    .container {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
