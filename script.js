@@ -1,22 +1,28 @@
 // ===== 設定の読み込み =====
 let config = {
-    couponUrl: '', // LSEG クーポン URL（config.json から読み込む）
-    productUrl: '', // 楽天商品 URL（config.json から読み込む）
-    pixelId: '' // Meta Pixel ID（未使用）
+    couponUrl: '',
+    productUrl: '',
+    pixelId: ''
 };
 
-// config.json から設定を読み込む
-fetch('config.json')
-    .then(response => response.json())
-    .then(data => {
+async function loadConfig() {
+    try {
+        const response = await fetch('config.json');
+        const data = await response.json();
         config = data;
-        // リンク設定
         setupLinks();
-    })
-    .catch(error => {
+        console.log('✅ config.json 読み込み完了:', config);
+    } catch (error) {
         console.warn('config.json が見つかりません:', error);
-        console.warn('手動で config.json を作成してください。');
-    });
+    }
+}
+
+// ページロード時に実行
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadConfig);
+} else {
+    loadConfig();
+}
 
 // ===== リンク設定 =====
 function setupLinks() {
