@@ -67,9 +67,7 @@ function setupLinks() {
     }
 }
 
-// ===== Meta Pixel の埋め込み（オプション）=====
-// 以下のコメントを外して、Meta Pixel ID を設定してください
-/*
+// ===== Meta Pixel の埋め込み =====
 (function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -78,9 +76,8 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', 'YOUR_PIXEL_ID_HERE'); // ← Meta Pixel ID をここに設定
+fbq('init', config.pixelId); // Meta Pixel ID は config.json から読み込み
 fbq('track', 'PageView');
-*/
 
 console.log('LP が読み込まれました。');
 console.log('現在の設定:', config);
